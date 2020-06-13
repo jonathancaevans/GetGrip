@@ -1,0 +1,37 @@
+<p>
+	<strong>Name:</strong>
+	<%= @gym.name %>
+</p>
+
+<%= link_to 'New Set', new_gym_sett_path(@gym), class: "btn btn-success" %>
+
+<h2>Walls</h2>
+<table class = "table table-hover">
+	<thead class = "thead-dark">
+		<tr>
+			<th>Color</th>
+			<th>Wall</th>
+			<th>Grade</th>
+		</tr>
+	</thead>
+
+
+	<% @gym.routes.each do |route| %>
+
+			<tr>
+				<td style="background-color:<%= @gym.hold_colors.find(route.hold_color).color %>"> 
+					<b style="color: #fff; mix-blend-mode: difference;"><%= @gym.hold_colors.find(route.hold_color).colorName %></b>
+				</td>
+				<td><%= Wall.find(route.wall_id).name %></td>
+				<td><%= route.grade %></td>
+			</tr>
+
+	<% end %>
+</table>
+
+<%= pie_chart @gym.routes.group(:hold_color).count.transform_keys { |key| key = @gym.hold_colors.find(key).colorName}, colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
+
+
+<%= link_to 'Settings', edit_gym_path, class: "btn btn-success" %>
+
+<%= link_to 'Back', companies_path, class: "btn btn-dark" %>

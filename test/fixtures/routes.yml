@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hold_color: MyString
+  grade: MyString
+  setters: MyString
+  is_set: 1
+
+two:
+  hold_color: MyString
+  grade: MyString
+  setters: MyString
+  is_set: 1

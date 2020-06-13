@@ -1,0 +1,15 @@
+<%= form_with model: @wall, local: true do |form|%>
+  <p> 
+    <%= form.label :Name %><br>
+    <%= form.text_field :name, class: "form-control"%>
+  </p> 
+  <p>
+    <%= form.label :Type %><br>
+    <%= form.select(:wall_type, options_for_select([['Boulder', 'Boulder'], ['Wall', 'Wall'], ['Both', 'Both']], @wall.wall_type), {}, { :class => 'form-control' })%>
+  </p>
+  <p>
+    <%= form.submit :Submit , class: "btn btn-success"%>
+  </p>
+<% end %>
+
+<%= link_to 'Cancel', edit_gym_path(@wall.gym_id), class: "btn btn-dark"%>

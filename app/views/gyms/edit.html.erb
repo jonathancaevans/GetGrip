@@ -1,0 +1,19 @@
+<h2>Edit Gym</h2>
+
+<%= form_with model: @gym, local: true do |form|%>
+  <div class ="input-group mb-3">
+    <h3>Gym Name: </h3>
+    <%= form.text_field :name, class: "form-control" %>
+    <div class="input-group-append">
+      <%= form.submit :Submit, class: 'btn btn-outline-secondary' %>
+    </div>
+  </div>
+<% end %>
+
+<%= render 'editGrades' %>
+<br></br>
+<%= render 'editHoldColors' %>
+<br></br>
+<%= render 'editWalls', @Gym %>
+<br></br>
+<%= link_to 'Back', gym_path, class: "btn btn-dark"%>

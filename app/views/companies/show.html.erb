@@ -1,0 +1,20 @@
+<p>
+	<strong>Name:</strong>
+	<%= @company.name %>
+</p>
+
+<p>
+	<strong>Phone:</strong>
+	<%= @company.phone %>
+</p>
+
+<h2>Gyms</h2>
+<% @company.gyms.each do |gym| %>
+  <p>
+    <strong>Gym:</strong>
+    <%= gym.name %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', companies_path, class:"btn btn-dark"%>
+<%= link_to 'Edit', edit_company_path, class:"btn btn-success"%>

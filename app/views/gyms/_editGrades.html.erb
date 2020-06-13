@@ -1,0 +1,18 @@
+<div class = "card">
+	<h5 class="card-header">Grading Systems</h5>
+	<div class="card-body">
+		<% @gym.systems.each do |system| %>
+			<div class="card">
+				<h5 class="card-header"><%= system.name %><%= link_to 'Edit', edit_system_path(system) %></h5>
+				<div class="card-body">
+					<% system.grades.each do |grade| %>
+						<tr><%= grade.label %></tr>
+					<%end%>
+				</div>
+			</div>
+			<br></br>
+		<%end%>
+
+		<%= link_to 'New Grading System', new_gym_system_path(@gym.id), class: "btn btn-dark"%>
+	</div>
+</div>

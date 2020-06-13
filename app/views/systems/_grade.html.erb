@@ -1,0 +1,7 @@
+<tr>
+	<td><%= f.text_field :label %></td>
+	<td>
+		<%= f.hidden_field :_destroy, as: :hidden %>
+		<%= link_to 'Delete', '#', class: 'remove_record' %>
+	</td>
+</tr>

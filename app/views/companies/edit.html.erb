@@ -1,0 +1,16 @@
+<h1>Edit Company</h1>
+
+<%= render 'form' %>
+
+<h2>Add a gym:</h2>
+<%= form_with(model: [ @company, @company.gyms.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', company_path, class: "btn btn-dark"%>

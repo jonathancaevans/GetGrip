@@ -1,0 +1,19 @@
+<%= form_for(@sett) do |f| %>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Hold Color</th>
+      </tr>
+    </thead>
+    <tbody class='fields'>
+      <%= f.fields_for :routes do |builder| %>
+        <%= render 'route', f: builder %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= link_to_add_row('Add Task', f, :routes, class: 'btn btn-primary') %>
+  </div>
+<% end %>

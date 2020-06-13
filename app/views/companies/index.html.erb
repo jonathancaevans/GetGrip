@@ -1,0 +1,44 @@
+<h1>Company List</h1>
+
+<div class="table-responsive table-hover" >
+  <table class="table">
+    <thead class = "thead-dark">
+      <tr>
+      	<th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Show</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    	<% @company.each do |company| %>
+	      <tr class="accordion-toggle collapsed" id="accordion<%=company.id%>" data-toggle="collapse" data-parent="#accordion<%=company.id%>" href="#collapse<%=company.id%>">
+			<td class="expand-button"></td>
+			<td><%= company.name %></td>
+			<td><%= company.phone %></td>
+			<td><%= link_to 'Show', company_path(company), class: "btn btn-info"%></td>
+			<td><%= link_to 'Edit', edit_company_path(company), class: "btn btn-success"%><td>
+			<td><%= link_to 'Delete', company_path(company), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?'}%><td>
+		  </tr>
+
+			<tr class="hide-table-padding">
+				<td></td>
+		  		<td colspan="3">
+					<div id="collapse<%=company.id%>" class="collapse in p-3">
+						<% company.gyms.each do |gym|%>
+						  <div class="row">
+						    <div class="col-2"><%= link_to gym.name, gym_path(gym)%></div>
+						  </div>
+						<%end%>
+					</div>
+				</td>
+			</tr>
+	  	<%end%>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'New Company', new_company_path, class: "btn btn-success"%>

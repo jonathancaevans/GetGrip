@@ -1,0 +1,26 @@
+<%= form_for(@system) do |f| %>
+
+  <div class="form-inputs">
+    <td><%= f.text_field :name %></td>
+  </div>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Difficulty Index</th>
+        <th>label</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id = "grades" class='fields'>
+      <%= f.fields_for :grades do |builder| %>
+        <%= render 'grade', f: builder %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-success'%>
+    <%= link_to_add_row('Add Grade', f, :grades, class: 'btn btn-primary') %>
+  </div>
+<% end %>
