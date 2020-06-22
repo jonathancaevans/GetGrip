@@ -23,14 +23,22 @@
 					<b style="color: #fff; mix-blend-mode: difference;"><%= @gym.hold_colors.find(route.hold_color).colorName %></b>
 				</td>
 				<td><%= Wall.find(route.wall_id).name %></td>
-				<td><%= route.grade %></td>
+				<td><%= Grade.find_by(id: route.grade_id).label unless !Grade.find_by(id: route.grade_id) %></td>
 			</tr>
 
 	<% end %>
 </table>
 
+
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+
 <%= pie_chart @gym.routes.group(:hold_color).count.transform_keys { |key| key = @gym.hold_colors.find(key).colorName}, colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
 
+<%= column_chart @gym.routes.joins(:grade).merge(Grade.order(difficulty: :asc)).group(:grade_id).count.transform_keys { |key| key = Grade.find_by(id: key).label unless !Grade.find_by(id: key)}%>
+
+<%=column_chart get_grade_breakdown(@gym, @gym.systems.first), stacked: true, colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
+
+<%= get_grade_breakdown(@gym, @gym.systems.first)%>
 
 <%= link_to 'Settings', edit_gym_path, class: "btn btn-success" %>
 

@@ -19,6 +19,9 @@ class SettsController < ApplicationController
 			route.update(gym_id: @sett.gym_id)
 			puts route.gym_id
 		end
+
+		@gym = Gym.find(@sett.gym_id)
+		redirect_to gym_path(@gym)
 	end
 
 	private
@@ -28,6 +31,7 @@ class SettsController < ApplicationController
 
 	    def sett_params
 	      # params.require(:todo_list).permit(:name, tasks_attributes: [:id, :_destroy, :todo_list_id, :name, :completed, :due])
-	      params.require(:sett).permit(routes_attributes: [:hold_color, :wall_id, :grade, :sett_id])
+	      params.require(:sett).permit(routes_attributes: [:hold_color, :wall_id, :grade_id, :sett_id])
 	    end
 end
+ 

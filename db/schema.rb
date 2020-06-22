@@ -48,14 +48,15 @@ ActiveRecord::Schema.define(version: 2020_06_11_034214) do
 
   create_table "routes", force: :cascade do |t|
     t.string "hold_color"
-    t.string "grade"
     t.string "setters"
     t.integer "is_set"
     t.integer "sett_id", null: false
     t.integer "wall_id", null: false
     t.integer "gym_id"
+    t.integer "grade_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["grade_id"], name: "index_routes_on_grade_id"
     t.index ["gym_id"], name: "index_routes_on_gym_id"
     t.index ["sett_id"], name: "index_routes_on_sett_id"
     t.index ["wall_id"], name: "index_routes_on_wall_id"
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_034214) do
 
   add_foreign_key "grades", "systems"
   add_foreign_key "gyms", "companies"
+  add_foreign_key "routes", "grades"
   add_foreign_key "routes", "gyms"
   add_foreign_key "routes", "setts"
   add_foreign_key "routes", "walls"

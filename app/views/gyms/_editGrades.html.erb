@@ -3,9 +3,13 @@
 	<div class="card-body">
 		<% @gym.systems.each do |system| %>
 			<div class="card">
-				<h5 class="card-header"><%= system.name %><%= link_to 'Edit', edit_system_path(system) %></h5>
+				<h5 class="card-header container-fluid">
+					<%= system.name %>
+					<%= link_to 'Edit', edit_system_path(system), class: "btn btn-primary float-right"%>
+					<%= link_to 'Delete', system, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger float-right"%>
+				</h5>
 				<div class="card-body">
-					<% system.grades.each do |grade| %>
+					<% system.grades.order(:difficulty).each do |grade| %>
 						<tr><%= grade.label %></tr>
 					<%end%>
 				</div>

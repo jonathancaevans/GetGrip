@@ -14,5 +14,12 @@ $(document).on('turbolinks:load', function() {
     return event.preventDefault();
   });
   
-  $("#grades").sortable({placeholder: "ui-state-highlight", axis: 'y'});
+  $("#grades").sortable( {
+    placeholder: "ui-state-highlight", axis: 'y',
+    update: function( event, ui ) {
+      $(this).children().each(function(index) {
+        $(this).find('input:first').val(index + 1)
+      });
+    }
+  });
 });
