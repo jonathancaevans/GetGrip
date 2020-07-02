@@ -1,0 +1,6 @@
+$("#<%=dom_id(@route)%>").fadeOut()
+$("#<%=dom_id(@route)%>").remove();
+
+if(<%=@route.is_set%> == 2){
+	$("#todo").append("<%= j render 'route', route: @route%>");
+}

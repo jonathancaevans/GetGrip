@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
-	before_action :require_login, only: [:new]
-	
+	before_action :company_perms
+
 	def new
 		@company = Company.new
 	end
@@ -44,6 +44,10 @@ class CompaniesController < ApplicationController
 	end
 
 	private
+		def company_perms
+
+		end
+		
 		def company_params
 			params.require(:company).permit(:name, :phone)
 		end

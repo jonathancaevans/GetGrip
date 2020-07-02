@@ -1,5 +1,5 @@
 class SystemsController < ApplicationController
-	before_action :set_system, only: [:show, :edit, :update, :destroy]
+	before_action :system_perms, except: [:show]
 	
 	def new
     	@gym = Gym.find(params[:gym_id])
@@ -15,7 +15,9 @@ class SystemsController < ApplicationController
  	end
 
 	def update
+		@system = System.find(params[:id])
 		@system.update(system_params)
+		
 		@gym = Gym.find(@system.gym_id)
 		redirect_to edit_gym_path(@gym), notice: 'Todo list was successfully created.'
 	end
@@ -27,14 +29,23 @@ class SystemsController < ApplicationController
 	end
 
 	def destroy
-		@gym = Gym.find(@system.gym_id)
+		@system = System.find(params[:id])
 		@system.destroy
 		redirect_to edit_gym_path(@gym.id), notice: 'Todo list was successfully destroyed.'
 	end
 
 	private
-		def set_system
-			@system = System.find(params[:id])
+		def system_perms
+			if params[:gym_id] == nil
+				@gym = Gym.find(System.find(params[:id]).gym_id)
+			else
+				@gym = Gym.find(params[:gym_id])
+			end
+			
+
+			if !helpers.is_setter(@gym)
+				redirect_to root_path and return
+			end
 		end
 
 		def system_params

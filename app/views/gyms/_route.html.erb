@@ -1,0 +1,25 @@
+<%= content_tag :tr, id: dom_id(route) do %>
+	<td>
+		<%= link_to "View", route_path(route), class: "btn btn-primary"%>
+	</td>
+
+	<td style="background-color:<%= @gym.hold_colors.find(route.hold_color).color %>"> 
+		<b style="color: #fff; mix-blend-mode: difference;"><%= @gym.hold_colors.find(route.hold_color).colorName %></b>
+	</td>
+
+	<% if route.is_set == 2 || route.is_set == 0 %>
+		<td><%= Wall.find(route.wall_id).name %></td>
+	<% end %>
+
+	<td><%= Grade.find_by(id: route.grade_id).label unless !Grade.find_by(id: route.grade_id) %></td>
+
+	<% if is_setter(@gym) %>
+		<% if route.is_set == 0 %>
+			<td><%= button_to "Set", route_set_path(route), class: "btn btn-success", remote: true %></td>
+		<% elsif route.is_set == 1 %>
+			<td><%= button_to "mark for strip", route_strip_path(route), class: "btn btn-warning", remote: true %></td>
+		<% else route.is_set == 2 %>
+			<td><%= button_to "Strip", route_strip_path(route), class: "btn btn-danger", remote: true %></td>
+		<% end %>
+	<% end %>
+<% end %>

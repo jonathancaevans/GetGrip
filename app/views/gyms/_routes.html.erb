@@ -1,0 +1,26 @@
+<div class = "card">
+  <h4 class="card-header">Routes up</h4>
+  <div class="card-body">
+	<% @gym.walls.each do |wall|%>
+		<%= content_tag :table, id: dom_id(wall), class: "table table-hover" do %>
+
+			<h5> <%= wall.name %> </h5>
+			
+			<thead class = "thead-dark">
+				<tr>
+					<th scope="col">View<th>
+					<th scope="col">Color</th>
+					<th scope="col">Grade</th>
+					<% if is_setter(@gym) %>
+						<th scope="col">Status<th>
+					<% end %>
+				</tr>
+			</thead>
+
+			<tbody>
+				<%= render partial: "route", collection: wall.routes.where("is_set = 1") %>
+			</tbody>
+		<% end %>
+	<% end %>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+$("#<%=dom_id(@route)%>").fadeOut();
+$("#<%=dom_id(@route)%>").remove();
+
+$("#<%=dom_id(@route.wall)%>").append("<%= j render 'route', route: @route%>");

@@ -29,12 +29,17 @@
     <div class="collapse" id="addColor">
       <div class="card card-body" >
         <%= form_with(model: [ @gym, @gym.hold_colors.build ], local: true) do |form| %>
-          <%= form.label :Name %><br>
-              <%= form.text_field :colorName, class: "form-control"%>
-
-          <%= form.color_field(:color) %>
-
-          <%= form.submit "Add", class: "btn btn-success"%>
+            <div class="form-row">
+              <div class="col-auto">
+                <%= form.text_field :colorName, class: "form-control"%>
+              </div>
+              <div class="col-auto">
+                <%= form.color_field(:color) %>
+              </div>
+              <div class="col-auto">
+                <%= form.submit "Add", class: "btn btn-success"%>
+              </div>
+            </div>
         <% end %>
       </div>
     </div>

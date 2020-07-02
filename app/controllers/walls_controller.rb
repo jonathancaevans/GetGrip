@@ -1,4 +1,6 @@
 class WallsController < ApplicationController
+	before_action :wall_perms, except: [:show]
+
     def create
     	@gym = Gym.find(params[:gym_id])
 		@wall = @gym.walls.create(wall_params)
@@ -18,6 +20,19 @@ class WallsController < ApplicationController
 	end
 
 	private
+		def wall_perms
+			if params[:gym_id] == nil
+				@gym = Gym.find(Wall.find(params[:id]).gym_id)
+			else
+				@gym = Gym.find(params[:gym_id])
+			end
+			
+
+			if !helpers.is_setter(@gym)
+				redirect_to root_path and return
+			end
+		end
+
 		def wall_params
 			params.require(:wall).permit(:name, :wall_type)
 		end

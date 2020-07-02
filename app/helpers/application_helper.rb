@@ -8,4 +8,12 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields " + args[:class], data: {id: id, fields: fields.gsub("\n", "")})
 
   end
+
+  def is_setter(gym)
+  	if current_user == nil
+  		false
+  	elsif @gym.routesetters.where(user_id: current_user.id).exists?
+  		true
+  	end
+  end
 end

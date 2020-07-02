@@ -1,5 +1,5 @@
 class SettsController < ApplicationController
-	before_action :set_sett, only: [:show, :edit, :update, :destroy]
+	before_action :sett_perms
 
 	def new
 		@gym = Gym.find(params[:gym_id])
@@ -13,6 +13,7 @@ class SettsController < ApplicationController
 	end
 
 	def update
+		@sett = Sett.find(params[:id])
 		@sett.update(sett_params)
 
 		@sett.routes.each do |route|
@@ -25,8 +26,17 @@ class SettsController < ApplicationController
 	end
 
 	private
-		def set_sett
-			@sett = Sett.find(params[:id])
+		def sett_perms
+			if params[:gym_id] == nil
+				@gym = Gym.find(Sett.find(params[:id]).gym_id)
+			else
+				@gym = Gym.find(params[:gym_id])
+			end
+			
+
+			if !helpers.is_setter(@gym)
+				redirect_to root_path and return
+			end
 		end
 
 	    def sett_params

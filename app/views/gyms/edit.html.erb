@@ -1,14 +1,22 @@
-<h2>Edit Gym</h2>
+<h1><%= @gym.name %> Settings</h1>
 
-<%= form_with model: @gym, local: true do |form|%>
-  <div class ="input-group mb-3">
-    <h3>Gym Name: </h3>
-    <%= form.text_field :name, class: "form-control" %>
-    <div class="input-group-append">
-      <%= form.submit :Submit, class: 'btn btn-outline-secondary' %>
-    </div>
-  </div>
-<% end %>
+<br></br>
+<div class = "card">
+	<h5 class="card-header">Information</h5>
+	<div class="card-body">
+		<%= form_with model: @gym, local: true do |form|%>
+		  <div class ="input-group mb-3">
+		    <h3>Gym Name: </h3>
+		    <%= form.text_field :name, class: "form-control" %>
+		    <div class="input-group-append">
+		      <%= form.submit :Submit, class: 'btn btn-outline-secondary' %>
+		    </div>
+		  </div>
+		<% end %>
+	</div>
+</div>
+
+<br></br>
 
 <%= render 'editGrades' %>
 <br></br>

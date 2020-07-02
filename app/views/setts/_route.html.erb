@@ -3,5 +3,5 @@
 
   	<td> <%= f.grouped_collection_select(:grade_id, @gym.systems, :grades, :name, :id, :label) %> </td>
   <td><%= f.select(:wall_id, options_from_collection_for_select(@gym.walls, 'id', 'name'), { :class => 'form-control' })%></td>
-  <td><%= f.select(:is_set, options_for_select([["To be set", 0], ["Set", 1], ["Stripped", 2]], ["To be set", 0]), { :class => 'form-control' })%></td>
+  <td><%= f.select(:is_set, options_for_select([["To be set", 0], ["Set", 1], ["To be stripped", 2], ["Stripped", 3]], ["To be set", 0]), { :class => 'form-control' })%></td>
 </tr> 

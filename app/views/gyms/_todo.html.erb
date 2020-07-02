@@ -1,0 +1,22 @@
+<div class = "card">
+  <h4 class="card-header">To Do</h4>
+  <div class="card-body">
+	<table class = "table table-hover">
+		<thead class = "thead-dark">
+			<tr>
+				<th>View<th>
+				<th>Color</th>
+				<th>Wall</th>
+				<th>Grade</th>
+				<th>Status<th>
+			</tr>
+		</thead>
+
+		<tbody id = "todo">
+			<%= render partial: "route", collection: @gym.routes.where("is_set = 0 or is_set = 2") %>
+		</tbody>
+	</table>
+
+	<%= link_to 'New Set', new_gym_sett_path(@gym), class: "btn btn-success" %>
+  </div>
+</div>

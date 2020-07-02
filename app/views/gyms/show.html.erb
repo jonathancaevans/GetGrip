@@ -1,81 +1,30 @@
-<p>
-	<strong>Name:</strong>
-	<%= @gym.name %>
-</p>
+<div class="container">
+     <h1>
+      <span> <%= @gym.name %> </span>
 
-<div class = "card">
-  <h4 class="card-header">Routes up</h4>
-  <div class="card-body">
-	<table class = "table table-hover">
-		<thead class = "thead-dark">
-			<tr>
-				<th>Color</th>
-				<th>Wall</th>
-				<th>Grade</th>
-			</tr>
-		</thead>
+      <%= link_to 'Settings', edit_gym_path, class: "btn btn-success" if is_setter(@gym)%>
+    </h1>
 
-
-		<% @gym.routes.where(is_set: 1).each do |route| %>
-
-				<tr>
-					<td style="background-color:<%= @gym.hold_colors.find(route.hold_color).color %>"> 
-						<b style="color: #fff; mix-blend-mode: difference;"><%= @gym.hold_colors.find(route.hold_color).colorName %></b>
-					</td>
-					<td><%= Wall.find(route.wall_id).name %></td>
-					<td><%= Grade.find_by(id: route.grade_id).label unless !Grade.find_by(id: route.grade_id) %></td>
-				</tr>
-
-		<% end %>
-	</table>
-  </div>
+    <hr/>
 </div>
+
+<%= render 'routes' %>
 
 <br></br>
 
-<div class = "card">
-  <h4 class="card-header">To Do</h4>
-  <div class="card-body">
-	<table class = "table table-hover">
-		<thead class = "thead-dark">
-			<tr>
-				<th>Color</th>
-				<th>Wall</th>
-				<th>Grade</th>
-			</tr>
-		</thead>
-
-
-		<% @gym.routes.where(is_set: 0).each do |route| %>
-
-				<tr>
-					<td style="background-color:<%= @gym.hold_colors.find(route.hold_color).color %>"> 
-						<b style="color: #fff; mix-blend-mode: difference;"><%= @gym.hold_colors.find(route.hold_color).colorName %></b>
-					</td>
-					<td><%= Wall.find(route.wall_id).name %></td>
-					<td><%= Grade.find_by(id: route.grade_id).label unless !Grade.find_by(id: route.grade_id) %></td>
-				</tr>
-
-		<% end %>
-	</table>
-
-	<%= link_to 'New Set', new_gym_sett_path(@gym), class: "btn btn-success" %>
-  </div>
-</div>
+<%= render 'todo' if is_setter(@gym) %>
 
 <br></br>
 
 <div class = "card">
   <h4 class="card-header">Gym stats</h4>
   <div class="card-body">
-	<%= pie_chart @gym.routes.group(:hold_color).count.transform_keys { |key| key = @gym.hold_colors.find(key).colorName}, colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
+	<%= pie_chart @gym.routes.where("is_set = 1 or is_set = 2").group(:hold_color).count.transform_keys { |key| key = @gym.hold_colors.find(key).colorName}, colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
 
-	<%= column_chart @gym.routes.joins(:grade).merge(Grade.order(difficulty: :asc)).group(:grade_id).count.transform_keys { |key| key = Grade.find_by(id: key).label unless !Grade.find_by(id: key)}%>
+	<%= column_chart @gym.routes.where("is_set = 1 or is_set = 2").joins(:grade).merge(Grade.order(difficulty: :asc)).group(:grade_id).count.transform_keys { |key| key = Grade.find_by(id: key).label unless !Grade.find_by(id: key)}%>
 
-	<%=column_chart get_grade_breakdown(@gym, @gym.systems.first), stacked: true, colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color), xtitle: "Difficulty Index" %>
+
   </div>
 </div>
-
-<%= link_to 'Settings', edit_gym_path, class: "btn btn-success" %>
 
 <%= link_to 'Back', companies_path, class: "btn btn-dark" %>

@@ -4,6 +4,8 @@ class Gym < ApplicationRecord
 	has_many :routes
 	has_many :hold_colors, dependent: :destroy
 	has_many :systems, dependent: :destroy
+
+	has_many :routesetters, dependent: :destroy
 	
  	belongs_to :company
 end
