@@ -14,3 +14,7 @@
  *= require_self
  *= require jquery-ui
  */
+
+ body {
+  background-color: #ebebeb;
+}

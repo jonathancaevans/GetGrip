@@ -1,7 +1,12 @@
 <tr>
-  <td><%= f.select(:hold_color, options_from_collection_for_select(@gym.hold_colors, 'id', 'colorName'), { :class => 'form-control' })%></td>
+  <td><%= f.select(:hold_color, options_for_select(@gym.hold_colors.map{ |c| [c.colorName, c.id, {'data-swatch'=>c.color}] }), {}, { :class => 'form-control color'})%></td>
 
-  	<td> <%= f.grouped_collection_select(:grade_id, @gym.systems, :grades, :name, :id, :label) %> </td>
+  <td><%= f.select :grade_id, grouped_options_for_select(@gym.systems.map{ |system| [system.name, system.grades.map{ |g| [g.label, g.id, {'data-difficulty'=>g.difficulty}] } ] }) %></td>
+
   <td><%= f.select(:wall_id, options_from_collection_for_select(@gym.walls, 'id', 'name'), { :class => 'form-control' })%></td>
-  <td><%= f.select(:is_set, options_for_select([["To be set", 0], ["Set", 1], ["To be stripped", 2], ["Stripped", 3]], ["To be set", 0]), { :class => 'form-control' })%></td>
+
+  <td><%= f.collection_select :setters, User.all, :id, :email, {:include_blank => false}, {:class => 'col-xs-12 col-md-7 padding_15', :multiple => true} %></td>
+
+
+  <td><%= f.select(:is_set, options_for_select([["To be set", 0], ["Set", 1], ["To be stripped", 2], ["Stripped", 3]], ["To be set", 0]), { :class => '' })%></td>
 </tr> 

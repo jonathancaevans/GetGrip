@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'companies/index'
-  
+
+  namespace :charts do
+    get "colors"
+    get "grades"
+  end
+
   resources :companies, shallow: true do
   	resources :gyms do
+      resources :routesetters
   		resources :walls
       resources :hold_colors
       resources :systems
@@ -15,6 +21,8 @@ Rails.application.routes.draw do
   		end
   	end
   end
+
+  get "unauthorized/notallowed"
 
   root 'companies#index'
 end

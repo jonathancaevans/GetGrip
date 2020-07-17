@@ -26,7 +26,7 @@ class GymsController < ApplicationController
 			@gym = Gym.find(params[:id])
 			
 			if !helpers.is_setter(@gym)
-				redirect_to root_path and return
+				redirect_to unauthorized_notallowed_path and return
 			end
 		end
 

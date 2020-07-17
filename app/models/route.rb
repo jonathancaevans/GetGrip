@@ -3,4 +3,6 @@ class Route < ApplicationRecord
 	belongs_to :wall, optional: true
 	belongs_to :gym, optional: true
 	belongs_to :grade, optional: true
+
+	serialize :setters
 end

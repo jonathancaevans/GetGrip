@@ -1,0 +1,3 @@
+$("#<%=dom_id(@color)%>").fadeOut();
+$("#<%=dom_id(@color)%>").after("<%= j render 'inline_form', color: @color %>");
+$("#<%=dom_id(@color)%>").remove();

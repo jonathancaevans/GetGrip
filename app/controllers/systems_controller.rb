@@ -23,9 +23,7 @@ class SystemsController < ApplicationController
 	end
 
 	def edit
-    # 3.times do
-    # @todo_list.tasks.build
-    # end
+	    @system = System.find(params[:id])
 	end
 
 	def destroy

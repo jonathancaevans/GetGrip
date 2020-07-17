@@ -4,3 +4,9 @@ $("#<%=dom_id(@route)%>").remove();
 if(<%=@route.is_set%> == 2){
 	$("#todo").append("<%= j render 'route', route: @route%>");
 }
+else
+{
+	Chartkick.eachChart( function(chart) {
+	  chart.refreshData()
+	})
+}

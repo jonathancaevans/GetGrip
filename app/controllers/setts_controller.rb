@@ -33,7 +33,6 @@ class SettsController < ApplicationController
 				@gym = Gym.find(params[:gym_id])
 			end
 			
-
 			if !helpers.is_setter(@gym)
 				redirect_to root_path and return
 			end
@@ -41,7 +40,7 @@ class SettsController < ApplicationController
 
 	    def sett_params
 	      # params.require(:todo_list).permit(:name, tasks_attributes: [:id, :_destroy, :todo_list_id, :name, :completed, :due])
-	      params.require(:sett).permit(routes_attributes: [:hold_color, :wall_id, :grade_id, :sett_id, :is_set])
+	      params.require(:sett).permit(routes_attributes: [:hold_color, :wall_id, :grade_id, :sett_id, :is_set, setters: []])
 	    end
 end
  

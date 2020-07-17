@@ -1,0 +1,6 @@
+<%= content_tag :tr, id: dom_id(color) do %>
+    <td><%= color.colorName %></td>
+    <td><%= color.color %></td>
+    <td style="background-color:<%= color.color %>"></td>
+    <td><%= link_to "Edit", edit_hold_color_path(color), class: "btn btn-success", remote: true %></td>
+<% end %>

@@ -1,0 +1,15 @@
+<div class = "container">
+	<%= form_with model: color, id: dom_id(color, 'inline_form') do |form|%>
+		<div class="form-row">
+			<div class="col-5">
+	    		<%= form.text_field :colorName, class: "form-control"%>
+	    	</div>
+	    	<div class="col">
+	    		<%= form.color_field(:color) %>
+	    	</div>
+	    	<div class="col-sm">
+				<%= form.submit "Save", class: "btn btn-success"%>
+			</div>
+		</div>
+	<% end %>
+</div>

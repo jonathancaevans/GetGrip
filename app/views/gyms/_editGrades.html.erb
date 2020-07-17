@@ -1,24 +1,19 @@
-<div class = "card">
-	<h5 class="card-header">Grading Systems</h5>
-	<div class="card-body">
-		<% @gym.systems.each do |system| %>
-			<div class="card">
-				<h5 class="card-header container-fluid">
-					<%= system.name %>
-					<div class="btn-group float-right" role="group">
-						<%= link_to 'Edit', edit_system_path(system), class: "btn btn-primary "%>
-						<%= link_to 'Delete', system, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
-					</div>
-				</h5>
-				<div class="card-body">
-					<% system.grades.order(:difficulty).each do |grade| %>
-						<tr><%= grade.label %></tr>
-					<%end%>
-				</div>
+<% @gym.systems.each do |system| %>
+	<div class="card">
+		<h5 class="card-header container-fluid">
+			<%= system.name %>
+			<div class="btn-group float-right" role="group">
+				<%= link_to 'Edit', edit_system_path(system), class: "btn btn-primary "%>
+				<%= link_to 'Delete', system, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
 			</div>
-			<br></br>
-		<%end%>
-
-		<%= link_to 'New Grading System', new_gym_system_path(@gym.id), class: "btn btn-dark"%>
+		</h5>
+		<div class="card-body">
+			<% system.grades.order(:difficulty).each do |grade| %>
+				<tr><%= grade.label %></tr>
+			<%end%>
+		</div>
 	</div>
-</div>
+	<br></br>
+<%end%>
+
+<%= link_to 'New Grading System', new_gym_system_path(@gym.id), class: "btn btn-dark"%>

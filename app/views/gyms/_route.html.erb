@@ -16,6 +16,10 @@
 	<% if is_setter(@gym) %>
 		<% if route.is_set == 0 %>
 			<td><%= button_to "Set", route_set_path(route), class: "btn btn-success", remote: true %></td>
+			<td><% route.setters.each do |setter| %>
+					<a href="#" class="badge badge-primary"><%= User.find(setter).email unless setter == "" %></a>
+				<%end%>
+			</td>
 		<% elsif route.is_set == 1 %>
 			<td><%= button_to "mark for strip", route_strip_path(route), class: "btn btn-warning", remote: true %></td>
 		<% else route.is_set == 2 %>

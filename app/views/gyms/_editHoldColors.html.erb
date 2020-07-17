@@ -1,54 +1,50 @@
-<div class = "card">
-  <h5 class="card-header">Hold Colors</h5>
-  <div class="card-body">
-    <% @gym.hold_colors do |color| %>
-      <tr>
-          <td><%= color.name %></td>
-      </tr>
-    <%end%>
+<% @gym.hold_colors do |color| %>
+  <tr>
+      <td><%= color.name %></td>
+  </tr>
+<%end%>
 
-    <table class = "table table-hover">
-      <thead class = "thead-dark">
-        <tr>
-          <th>Name</th>
-          <th>Swatch</th>
-          <th>Color</th>
-          <th>Edit</th>
-        </tr>
-      </thead>
+<table class = "table table-hover">
+  <thead class = "thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Swatch</th>
+      <th>Color</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
 
-      <% @gym.hold_colors.each do |color| %>
-        <tr>
-            <td><%= color.colorName %></td>
-            <td><%= color.color %></td>
-            <td style="background-color:<%= color.color %>"></td>
-        </tr>
-      <%end%>
-    </table>
+  <% @gym.hold_colors.each do |color| %>
+    <%= content_tag :tr, id: dom_id(color) do %>
+        <td><%= color.colorName %></td>
+        <td><%= color.color %></td>
+        <td style="background-color:<%= color.color %>"></td>
+        <td><%= link_to "Edit", edit_hold_color_path(color), class: "btn btn-success", remote: true %></td>
+    <% end %>
+  <%end%>
+</table>
 
-    <div class="collapse" id="addColor">
-      <div class="card card-body" >
-        <%= form_with(model: [ @gym, @gym.hold_colors.build ], local: true) do |form| %>
-            <div class="form-row">
-              <div class="col-auto">
-                <%= form.text_field :colorName, class: "form-control"%>
-              </div>
-              <div class="col-auto">
-                <%= form.color_field(:color) %>
-              </div>
-              <div class="col-auto">
-                <%= form.submit "Add", class: "btn btn-success"%>
-              </div>
-            </div>
-        <% end %>
-      </div>
-    </div>
-
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addColor" aria-expanded="false" aria-controls="collapseExample">
-        <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
-          <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
-        </svg>
-    </button>
+<div class="collapse" id="addColor">
+  <div class="card card-body" >
+    <%= form_with(model: [ @gym, @gym.hold_colors.build ], local: true) do |form| %>
+        <div class="form-row">
+          <div class="col-auto">
+            <%= form.text_field :colorName, class: "form-control"%>
+          </div>
+          <div class="col-auto">
+            <%= form.color_field(:color) %>
+          </div>
+          <div class="col-auto">
+            <%= form.submit "Add", class: "btn btn-success"%>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>
+
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addColor" aria-expanded="false" aria-controls="collapseExample">
+    <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+      <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+    </svg>
+</button>

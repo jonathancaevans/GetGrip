@@ -1,0 +1,4 @@
+<%= content_tag :tr, id: dom_id(setter) do %>
+	<td><%= User.find(setter.user_id).email %></td>
+	<td><%= link_to 'Remove', routesetter_path(setter), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%></td>
+<% end %>

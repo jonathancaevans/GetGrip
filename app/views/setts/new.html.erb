@@ -1,1 +1,22 @@
-<%= render 'form', sett: @sett %>
+<div class = "card">
+  <h2 class="card-header">New Set</h2>
+  <div class="card-body">
+	<%= render 'form', sett: @sett %>
+  </div>
+</div>
+
+<div class = "card">
+ 	<h2 class="card-header">Set Stats</h2>
+	<div class="card-body">
+		<div class = "container">
+			<div class = "row">
+				<div class = "col">
+					<%= column_chart({"Football" => 10, "Basketball" => 5})%>
+				</div>
+				<div class = "col">
+					<%= column_chart({"Football" => 10, "Basketball" => 5})%>
+				</div>
+			</div>
+		</div>
+   </div>
+</div>

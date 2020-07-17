@@ -15,6 +15,8 @@ require("jquery")
 require("jquery-ui")
 
 window.jQuery = window.$ = require('jquery')
+import select2 from 'select2';
+import 'select2/dist/css/select2.css';
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -1,1 +1,12 @@
-Hello!
+<div class = "card">
+	<div class = "container">
+		<div class = "row">
+			<div class="col"> Setters: 
+				<% @route.setters.each do |setter| %>
+					<a href="#" class="badge badge-primary"><%= User.find(setter).email unless setter == "" %></a>
+				<%end%>
+			</div>
+			<div class="col">Column</div>
+		</div>
+	</div>
+<div class = "container">

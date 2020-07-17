@@ -1,12 +1,13 @@
-<div class="container">
-     <h1>
-      <span> <%= @gym.name %> </span>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h1"><%= @gym.name %></h1>
 
-      <%= link_to 'Settings', edit_gym_path, class: "btn btn-success" if is_setter(@gym)%>
-    </h1>
-
-    <hr/>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <%= link_to 'Settings', edit_gym_path, class: "btn btn-md btn-success" if is_setter(@gym)%>
+    </div>
+  </div>
 </div>
+
 
 <%= render 'routes' %>
 
@@ -19,9 +20,9 @@
 <div class = "card">
   <h4 class="card-header">Gym stats</h4>
   <div class="card-body">
-	<%= pie_chart @gym.routes.where("is_set = 1 or is_set = 2").group(:hold_color).count.transform_keys { |key| key = @gym.hold_colors.find(key).colorName}, colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
+	<%= pie_chart charts_colors_path(@gym), colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
 
-	<%= column_chart @gym.routes.where("is_set = 1 or is_set = 2").joins(:grade).merge(Grade.order(difficulty: :asc)).group(:grade_id).count.transform_keys { |key| key = Grade.find_by(id: key).label unless !Grade.find_by(id: key)}%>
+	<%= column_chart charts_grades_path(@gym)%>
 
 
   </div>
