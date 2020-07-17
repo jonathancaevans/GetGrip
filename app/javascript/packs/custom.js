@@ -1,9 +1,11 @@
 $(document).on('turbolinks:load', function() {
-
-   $('body').on('select2:select', function (e) {
-    contains();
+  //Color set ajax update
+  $('body').on('select2:select', function (e) {
     var colors = new Array();
-    var x = 0;
+    var grades = new Array();
+
+    var colorCounter = 0;
+    var gradeCounter = 0;
 
     $('.color').find(':selected').each(function( index ) {
       var i;
@@ -32,14 +34,47 @@ $(document).on('turbolinks:load', function() {
 
         color.color = $(this).attr('data-swatch');
 
-        colors[x] = color;
+        colors[colorCounter] = color;
 
-        x++;
+        colorCounter++;
       }
     });
-    
+
+    $('.grade').find(':selected').sort((a,b) => $(a).data("difficulty") - $(b).data("difficulty")).each(function( index ) {
+      var i;
+      var newGrade = true;
+
+      for(i = 0; i < grades.length; i++){
+        if(grades[i].name == $(this).text())
+        {
+          var data = new Object();
+          data["Occurance"] = grades[i].data["Occurance"] + 1;
+
+          grades[i].data = data;
+          i = grades.length;
+          newGrade = false;
+        }
+      }
+
+      if(newGrade)
+      {
+        var grade = new Object();
+        grade.name = $(this).text();
+
+        var data = new Object();
+        data["Occurance"] = 1;
+        grade.data = data;
+
+        grades[gradeCounter] = grade;
+
+        gradeCounter++;
+      }
+    });
+
     var chart = Chartkick.charts["chart-1"];
+    var chart2 = Chartkick.charts["chart-2"];
     chart.updateData(colors)
+    chart2.updateData(grades)
   });
 
   $(document).ready(function() {
