@@ -1,12 +1,16 @@
 $(document).on('turbolinks:load', function() {
   //Color set ajax update
   $('body').on('select2:select', function (e) {
-    updateStats();
+    if ($(".liveSettUpdate").length > 0) {
+      updateStats();
+    }
   });
 
   $(document).ready(function() {
     $('select').select2();
-    updateStats();
+    if ($(".liveSettUpdate").length > 0) {
+      updateStats();
+    }
   });
 
   $('form').on('click', '.remove_record', function(event) {

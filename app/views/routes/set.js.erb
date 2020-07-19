@@ -4,5 +4,5 @@ $("#<%=dom_id(@route)%>").remove();
 $("#<%=dom_id(@route.wall)%>").append("<%= j render 'route', route: @route%>");
 
 Chartkick.eachChart( function(chart) {
-  chart.refreshData()
+  chart.refreshData();
 })

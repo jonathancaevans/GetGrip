@@ -1,7 +1,7 @@
 <tr>
-  <td><%= f.select(:hold_color, options_for_select(@gym.hold_colors.map{ |c| [c.colorName, c.id, {'data-swatch'=>c.color}] }), {}, { :class => 'form-control color'})%></td>
+  <td><%= f.select(:hold_color, options_for_select(@gym.hold_colors.map{ |c| [c.colorName, c.id, {'data-swatch'=>c.color}] }), {}, { :class => 'form-control color liveSettUpdate'})%></td>
 
-  <td><%= f.select :grade_id, grouped_options_for_select(@gym.systems.map{ |system| [system.name, system.grades.map{ |g| [g.label, g.id, {'data-difficulty'=>g.difficulty}] } ] }), {}, { :class => 'form-control grade'} %></td>
+  <td><%= f.select :grade_id, grouped_options_for_select(@gym.systems.map{ |system| [system.name, system.grades.map{ |g| [g.label, g.id, {'data-difficulty'=>g.difficulty}] } ] }), {}, { :class => 'form-control grade liveSettUpdate'} %></td>
 
   <td><%= f.select(:wall_id, options_from_collection_for_select(@gym.walls, 'id', 'name'), { :class => 'form-control' })%></td>
 

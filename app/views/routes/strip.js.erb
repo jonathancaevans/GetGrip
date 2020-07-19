@@ -1,4 +1,4 @@
-$("#<%=dom_id(@route)%>").fadeOut()
+$("#<%=dom_id(@route)%>").fadeOut();
 $("#<%=dom_id(@route)%>").remove();
 
 if(<%=@route.is_set%> == 2){
@@ -7,6 +7,6 @@ if(<%=@route.is_set%> == 2){
 else
 {
 	Chartkick.eachChart( function(chart) {
-	  chart.refreshData()
+	  chart.refreshData();
 	})
 }
