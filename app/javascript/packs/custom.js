@@ -32,8 +32,9 @@ $(document).on('turbolinks:load', function() {
   $("#grades").sortable( {
     placeholder: "ui-state-highlight", axis: 'y',
     update: function( event, ui ) {
-      $(this).children().each(function(index) {
-        $(this).find('input:first').val(index + 1)
+      $(this).children().not("input").each(function(index) {
+        $(this).find('input:first').val(index + 1);
+        console.log(index);
       });
     }
   });
