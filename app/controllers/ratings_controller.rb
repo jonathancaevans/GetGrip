@@ -10,7 +10,9 @@ class RatingsController < ApplicationController
 
 	private
 		def rating_perms
-			
+			if !helpers.is_admin()
+				redirect_to unauthorized_notallowed_path and return
+			end
 		end
 
 		def rating_params
