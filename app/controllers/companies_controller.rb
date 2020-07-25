@@ -45,7 +45,9 @@ class CompaniesController < ApplicationController
 
 	private
 		def company_perms
-
+			if !helpers.is_admin()
+				redirect_to unauthorized_notallowed_path and return
+			end
 		end
 		
 		def company_params

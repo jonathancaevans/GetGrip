@@ -4,5 +4,7 @@ class Route < ApplicationRecord
 	belongs_to :gym, optional: true
 	belongs_to :grade, optional: true
 
+	has_many :ratings
+
 	serialize :setters
 end

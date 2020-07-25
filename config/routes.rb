@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :systems
   		resources :setts do
   			resources :routes do
+          resources :ratings
           post :strip
           post :set
         end

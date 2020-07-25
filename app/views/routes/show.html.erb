@@ -9,4 +9,14 @@
 			<div class="col">Column</div>
 		</div>
 	</div>
-<div class = "container">
+</div>
+
+<%= form_with(model: [ @route, @route.ratings.build ], remote: true) do |form| %>
+	<div class ="form-group">
+		<%= form.number_field :rating, class: "form-control" %>
+	</div>
+
+	<p>
+		<%= form.submit :Submit, class: 'btn btn-success' %>
+	</p>
+<% end %>

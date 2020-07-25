@@ -16,4 +16,12 @@ module ApplicationHelper
   		true
   	end
   end
+
+  def is_admin()
+    if current_user == nil
+      false
+    elsif current_user.isadmin == true
+      true
+    end
+  end
 end

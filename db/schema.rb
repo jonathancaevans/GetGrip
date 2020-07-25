@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_182110) do
+ActiveRecord::Schema.define(version: 2020_07_25_032100) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2020_07_17_182110) do
     t.index ["user_id"], name: "index_managers_on_user_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "route_id", null: false
+    t.integer "rating", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["route_id"], name: "index_ratings_on_route_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
   create_table "routes", force: :cascade do |t|
     t.string "hold_color"
     t.string "setters"
@@ -65,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_182110) do
     t.integer "grade_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "avgrating"
     t.index ["grade_id"], name: "index_routes_on_grade_id"
     t.index ["gym_id"], name: "index_routes_on_gym_id"
     t.index ["sett_id"], name: "index_routes_on_sett_id"
@@ -104,6 +115,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_182110) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
+    t.boolean "isadmin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -122,6 +134,8 @@ ActiveRecord::Schema.define(version: 2020_07_17_182110) do
   add_foreign_key "gyms", "companies"
   add_foreign_key "managers", "gyms"
   add_foreign_key "managers", "users"
+  add_foreign_key "ratings", "routes"
+  add_foreign_key "ratings", "users"
   add_foreign_key "routes", "grades"
   add_foreign_key "routes", "gyms"
   add_foreign_key "routes", "setts"
