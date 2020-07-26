@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
   devise_for :users
-  get 'companies/index'
 
   namespace :charts do
     get "colors"
@@ -25,5 +25,5 @@ Rails.application.routes.draw do
 
   get "unauthorized/notallowed"
 
-  root 'companies#index'
+  root 'welcome#index'
 end
