@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_07_25_032100) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "phone"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_032100) do
     t.integer "difficulty"
     t.string "label"
     t.string "color"
-    t.integer "system_id", null: false
+    t.bigint "system_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["system_id"], name: "index_grades_on_system_id"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_032100) do
 
   create_table "gyms", force: :cascade do |t|
     t.string "name"
-    t.integer "company_id", null: false
+    t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_gyms_on_company_id"
@@ -40,15 +43,15 @@ ActiveRecord::Schema.define(version: 2020_07_25_032100) do
   create_table "hold_colors", force: :cascade do |t|
     t.string "colorName"
     t.string "color"
-    t.integer "gym_id"
+    t.bigint "gym_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gym_id"], name: "index_hold_colors_on_gym_id"
   end
 
   create_table "managers", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "gym_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gym_id"], name: "index_managers_on_gym_id"
@@ -56,8 +59,8 @@ ActiveRecord::Schema.define(version: 2020_07_25_032100) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "route_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "route_id", null: false
     t.integer "rating", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -69,10 +72,10 @@ ActiveRecord::Schema.define(version: 2020_07_25_032100) do
     t.string "hold_color"
     t.string "setters"
     t.integer "is_set"
-    t.integer "sett_id", null: false
-    t.integer "wall_id", null: false
-    t.integer "gym_id"
-    t.integer "grade_id"
+    t.bigint "sett_id", null: false
+    t.bigint "wall_id", null: false
+    t.bigint "gym_id"
+    t.bigint "grade_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "avgrating"
@@ -83,8 +86,8 @@ ActiveRecord::Schema.define(version: 2020_07_25_032100) do
   end
 
   create_table "routesetters", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "gym_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gym_id"], name: "index_routesetters_on_gym_id"
@@ -92,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_032100) do
   end
 
   create_table "setts", force: :cascade do |t|
-    t.integer "gym_id", null: false
+    t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gym_id"], name: "index_setts_on_gym_id"
@@ -100,7 +103,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_032100) do
 
   create_table "systems", force: :cascade do |t|
     t.string "name"
-    t.integer "gym_id", null: false
+    t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gym_id"], name: "index_systems_on_gym_id"
@@ -124,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_032100) do
   create_table "walls", force: :cascade do |t|
     t.string "name"
     t.string "wall_type"
-    t.integer "gym_id", null: false
+    t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gym_id"], name: "index_walls_on_gym_id"
