@@ -1,0 +1,14 @@
+/* line 5, app/assets/stylesheets/companies.scss */
+.expand-button {
+  color: blue;
+}
+
+/* line 9, app/assets/stylesheets/companies.scss */
+.accordion-toggle .expand-button:before {
+  color: green;
+}
+
+/* line 13, app/assets/stylesheets/companies.scss */
+.accordion-toggle .collapsed .expand-button:before {
+  color: red;
+}
