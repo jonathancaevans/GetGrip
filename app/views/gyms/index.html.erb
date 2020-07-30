@@ -1,0 +1,25 @@
+<div class = "card mt-3">
+	 <h4 class="card-header">Gyms</h4>
+	
+	<div class="card-body">
+		<div class="table-responsive table-hover" >
+		  <table class="table">
+		    <thead class = "thead-dark">
+		        <th scope="col">Name</th>
+		      </tr>
+		    </thead>
+
+		    <tbody>
+		    	<% @gyms.each do |gym| %>
+			      <tr>
+					<td>
+						<%= gym.name %>
+						<%= link_to 'Show', gym_path(gym), class: "btn btn-info"%>
+					</td>
+				  </tr>
+			  	<%end%>
+		    </tbody>
+		  </table>
+		</div>
+	</div>
+</div>

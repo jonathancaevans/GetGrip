@@ -1,31 +1,33 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-  <h1 class="h1"><%= @gym.name %></h1>
+<div class = "mt-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h1"><%= @gym.name %></h1>
 
-  <div class="btn-toolbar mb-2 mb-md-0">
-    <div class="btn-group mr-2">
-      <%= link_to 'Settings', edit_gym_path, class: "btn btn-md btn-success" if is_setter(@gym)%>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <%= link_to 'Settings', edit_gym_path, class: "btn btn-md btn-success" if is_setter(@gym)%>
+      </div>
     </div>
   </div>
-</div>
 
 
-<%= render 'routes' %>
+  <%= render 'routes' %>
 
-<br></br>
+  <br></br>
 
-<%= render 'todo' if is_setter(@gym) %>
+  <%= render 'todo' if is_setter(@gym) %>
 
-<br></br>
+  <br></br>
 
-<div class = "card">
-  <h4 class="card-header">Gym stats</h4>
-  <div class="card-body">
-	<%= pie_chart charts_colors_path(@gym), colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
+  <div class = "card">
+    <h4 class="card-header">Gym stats</h4>
+    <div class="card-body">
+  	<%= pie_chart charts_colors_path(@gym), colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
 
-	<%= column_chart charts_grades_path(@gym)%>
+  	<%= column_chart charts_grades_path(@gym)%>
 
 
+    </div>
   </div>
-</div>
 
-<%= link_to 'Back', companies_path, class: "btn btn-dark" %>
+  <%= link_to 'Back', gyms_path, class: "btn btn-dark" %>
+</div>

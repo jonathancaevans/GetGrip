@@ -1,85 +1,78 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-  <h1 class="h1"> <%= @gym.name %> Settings </h1>
+<div class = "mt-4">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+	  <h1 class="h1"> <%= @gym.name %> Settings </h1>
 
-  <div class="btn-toolbar mb-2 mb-md-0">
-    <div class="btn-group mr-2">
-      <%= link_to 'Back', gym_path, class: "btn btn-md btn-secondary"%>
-    </div>
-  </div>
-</div>
-
-<br></br>
-<div class = "card">
-	<h5 class="card-header">Information</h5>
-	<div class="card-body">
-		<%= form_with model: @gym, local: true do |form|%>
-		  <div class ="input-group mb-3">
-		    <h3>Gym Name: </h3>
-		    <%= form.text_field :name, class: "form-control" %>
-		    <div class="input-group-append">
-		      <%= form.submit :Submit, class: 'btn btn-outline-secondary' %>
-		    </div>
-		  </div>
-		<% end %>
+	  <div class="btn-toolbar mb-2 mb-md-0">
+	    <div class="btn-group mr-2">
+	      <%= link_to 'Back', gym_path, class: "btn btn-md btn-secondary"%>
+	    </div>
+	  </div>
 	</div>
-</div>
 
-<br></br>
-
-<div class = "card">
-	<h5 class="card-header">Grading Systems
-		<button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseGrades" aria-expanded="true" aria-controls="collapseGrades">
-		  +
-		</button>
-	</h5>
-	<div class="collapse" id="collapseGrades">
+	<div class = "card mt-3">
+		<h5 class="card-header">Information</h5>
 		<div class="card-body">
-			<%= render 'editGrades' %>
+			<%= form_with model: @gym, local: true do |form|%>
+			  <div class ="input-group mb-3">
+			    <h3>Gym Name: </h3>
+			    <%= form.text_field :name, class: "form-control" %>
+			    <div class="input-group-append">
+			      <%= form.submit :Submit, class: 'btn btn-outline-secondary' %>
+			    </div>
+			  </div>
+			<% end %>
 		</div>
 	</div>
-</div>
 
-<br></br>
-
-<div class = "card">
-	<h5 class="card-header">Colors 
-		<button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseColors" aria-expanded="true" aria-controls="collapseColors">
-		  +
-		</button>
-	</h5>
-	<div class="collapse" id="collapseColors">
-		<div class="card-body">
-			<%= render 'editHoldColors' %>
+	<div class = "card mt-3">
+		<h5 class="card-header">Grading Systems
+			<button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseGrades" aria-expanded="true" aria-controls="collapseGrades">
+			  +
+			</button>
+		</h5>
+		<div class="collapse" id="collapseGrades">
+			<div class="card-body">
+				<%= render 'editGrades' %>
+			</div>
 		</div>
 	</div>
-</div>
 
-<br></br>
-
-<div class = "card">
-	<h5 class="card-header">Walls
-		<button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseWalls" aria-expanded="true" aria-controls="collapseOne">
-		  +
-		</button>
-	</h5>
-	<div class="collapse" id="collapseWalls">
-		<div class="card-body">
-			<%= render 'editWalls', @Gym %>
+	<div class = "card mt-3">
+		<h5 class="card-header">Colors 
+			<button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseColors" aria-expanded="true" aria-controls="collapseColors">
+			  +
+			</button>
+		</h5>
+		<div class="collapse" id="collapseColors">
+			<div class="card-body">
+				<%= render 'editHoldColors' %>
+			</div>
 		</div>
 	</div>
-</div>
 
-<br></br>
+	<div class = "card mt-3">
+		<h5 class="card-header">Walls
+			<button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseWalls" aria-expanded="true" aria-controls="collapseOne">
+			  +
+			</button>
+		</h5>
+		<div class="collapse" id="collapseWalls">
+			<div class="card-body">
+				<%= render 'editWalls', @Gym %>
+			</div>
+		</div>
+	</div>
 
-<div class = "card">
-	<h5 class="card-header">Route Setters
-		<button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseSetters" aria-expanded="true" aria-controls="collapseOne">
-		  +
-		</button>
-	</h5>
-	<div class="collapse" id="collapseSetters">
-		<div class="card-body">
-			<%= render 'editSetters', @Gym %>
+	<div class = "card mt-3">
+		<h5 class="card-header">Route Setters
+			<button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseSetters" aria-expanded="true" aria-controls="collapseOne">
+			  +
+			</button>
+		</h5>
+		<div class="collapse" id="collapseSetters">
+			<div class="card-body">
+				<%= render 'editSetters', @Gym %>
+			</div>
 		</div>
 	</div>
 </div>

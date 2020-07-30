@@ -1,5 +1,5 @@
 class GymsController < ApplicationController
-	before_action :gym_perms, except: [:show]
+	before_action :gym_perms, except: [:show, :index]
 
     def create
     	@company = Company.find(params[:company_id])
@@ -21,8 +21,16 @@ class GymsController < ApplicationController
 		@gym = Gym.find(params[:id])
 	end
 
+	def index
+		@gyms = Gym.all
+	end
+
 	private
 		def gym_perms
+			if helpers.is_admin
+				return
+			end
+
 			@gym = Gym.find(params[:id])
 			
 			if !helpers.is_setter(@gym)

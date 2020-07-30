@@ -7,21 +7,21 @@ Rails.application.routes.draw do
     get "grades"
   end
 
-  resources :companies, shallow: true do
-  	resources :gyms do
+  resources :companies
+
+  resources :gyms, shallow: true do
       resources :routesetters
-  		resources :walls
+      resources :walls
       resources :hold_colors
       resources :systems
-  		resources :setts do
-  			resources :routes do
+      resources :setts do
+        resources :routes do
           resources :ratings
           post :strip
           post :set
         end
-  		end
-  	end
-  end
+      end
+    end
 
   get "unauthorized/notallowed"
 
