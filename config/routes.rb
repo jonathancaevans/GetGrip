@@ -25,5 +25,8 @@ Rails.application.routes.draw do
 
   get "unauthorized/notallowed"
 
+  authenticated :user do
+    root 'gyms#index', as: :authenticated_root
+  end
   root 'welcome#index'
 end

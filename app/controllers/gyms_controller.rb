@@ -27,7 +27,7 @@ class GymsController < ApplicationController
 
 	private
 		def gym_perms
-			if helpers.is_admin
+			if params[:id] == nil && helpers.is_admin
 				return
 			end
 
