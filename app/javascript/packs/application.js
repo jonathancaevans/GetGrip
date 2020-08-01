@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("packs/custom")
 
+require("select2")
 require("chartkick")
 require("chart.js")
 require("jquery")
