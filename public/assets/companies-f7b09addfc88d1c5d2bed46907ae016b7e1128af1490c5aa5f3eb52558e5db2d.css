@@ -1,0 +1,38 @@
+/* line 5, app/assets/stylesheets/companies.scss */
+.expand-button {
+  color: blue;
+}
+
+/* line 9, app/assets/stylesheets/companies.scss */
+.accordion-toggle .expand-button:before {
+  color: green;
+}
+
+/* line 13, app/assets/stylesheets/companies.scss */
+.accordion-toggle .collapsed .expand-button:before {
+  color: red;
+}
+
+/* line 17, app/assets/stylesheets/companies.scss */
+tr.hide-table-padding td {
+  padding: 0;
+}
+
+/* line 21, app/assets/stylesheets/companies.scss */
+.expand-button {
+  position: relative;
+}
+
+/* line 25, app/assets/stylesheets/companies.scss */
+.accordion-toggle .expand-button:after {
+  position: absolute;
+  left: .75rem;
+  top: 50%;
+  transform: translate(0, -50%);
+  content: '-';
+}
+
+/* line 33, app/assets/stylesheets/companies.scss */
+.accordion-toggle.collapsed .expand-button:after {
+  content: '+';
+}
