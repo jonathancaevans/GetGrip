@@ -1,25 +1,31 @@
-<div class = "card">
-  <h2 class="card-header">New Set</h2>
+<div class = "card mt-3">
+  <h2 class="card-header">New Set <%= link_to 'Cancel', gym_path(params[:gym_id]), class: "btn btn-md btn-danger"%></h2>
   <div class="card-body">
 	<%= render 'form', sett: @sett %>
   </div>
 </div>
 
-<div class = "card">
- 	<h2 class="card-header">Set Stats</h2>
-	<div class="card-body">
-		<div class = "container">
-			<div class = "row">
-				<div class = "col">
-					<%= column_chart({})%>
-				</div>
-				<div class = "col">
-					<%= column_chart({})%>
-				</div>
-				<div class = "col">
-					<%= column_chart({})%>
+<div class = "card mt-3">
+ 	<h2 class="card-header">Set Stats
+ 		<button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#collapseStats" aria-expanded="true" aria-controls="collapseStats">
+			  +
+			</button>
+ 	</h2>
+ 	<div class="collapse" id="collapseStats">
+		<div class="card-body">
+			<div class = "container">
+				<div class = "row">
+					<div class = "col">
+						<%= column_chart({})%>
+					</div>
+					<div class = "col">
+						<%= column_chart({})%>
+					</div>
+					<div class = "col">
+						<%= column_chart({})%>
+					</div>
 				</div>
 			</div>
-		</div>
-   </div>
+	   </div>
+	  </div>
 </div>

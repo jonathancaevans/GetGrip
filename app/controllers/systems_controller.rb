@@ -11,7 +11,7 @@ class SystemsController < ApplicationController
 	    @system = system.new(grading_system_params)
 		@system.save
 
-		redirect_to edit_gym_path(@gym), notice: 'Todo list was successfully created.'
+		redirect_to edit_gym_path(@gym)
  	end
 
 	def update
@@ -19,7 +19,7 @@ class SystemsController < ApplicationController
 		@system.update(system_params)
 		
 		@gym = Gym.find(@system.gym_id)
-		redirect_to edit_gym_path(@gym), notice: 'Todo list was successfully created.'
+		redirect_to edit_gym_path(@gym)
 	end
 
 	def edit
@@ -29,7 +29,7 @@ class SystemsController < ApplicationController
 	def destroy
 		@system = System.find(params[:id])
 		@system.destroy
-		redirect_to edit_gym_path(@gym.id), notice: 'Todo list was successfully destroyed.'
+		redirect_to edit_gym_path(@gym.id)
 	end
 
 	private

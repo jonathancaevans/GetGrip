@@ -21,7 +21,7 @@
   <div class = "card">
     <h4 class="card-header">Gym stats</h4>
     <div class="card-body">
-  	<%= pie_chart charts_colors_path(@gym), colors: @gym.hold_colors.find(@gym.routes.group(:hold_color).count.keys).pluck(:color) %>
+  	<%= column_chart charts_colors_path(@gym)%>
 
   	<%= column_chart charts_grades_path(@gym)%>
 
