@@ -14,6 +14,7 @@ require("chartkick")
 require("chart.js")
 require("jquery")
 require("jquery-ui")
+require('select2/dist/css/select2.css')
 
 window.jQuery = window.$ = require('jquery')
 import select2 from 'select2';
