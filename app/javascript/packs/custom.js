@@ -1,3 +1,7 @@
+import 'select2'
+import 'select2/dist/css/select2.css'
+
+
 $(document).on('turbolinks:load', function() {
   //Color set ajax update
   $('body').on('select2:select', function (e) {
@@ -25,6 +29,7 @@ $(document).on('turbolinks:load', function() {
     regexp = new RegExp($(this).data('id'), 'g');
     $('.fields').append($(this).data('fields').replace(regexp, time));
     $('select').select2();
+    console.log("hello");
     updateStats();
     return event.preventDefault();
   });
