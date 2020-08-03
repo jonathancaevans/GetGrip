@@ -28,6 +28,8 @@ gem "chartkick"
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'rqrcode'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

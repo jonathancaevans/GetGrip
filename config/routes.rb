@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'home/welcome'
+  get 'home/profile'
   devise_for :users
 
   namespace :charts do
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   get "unauthorized/notallowed"
 
   authenticated :user do
-    root 'gyms#index', as: :authenticated_root
+    root 'home#profile', as: :authenticated_root
   end
-  root 'welcome#index'
+  root 'home#welcome'
 end

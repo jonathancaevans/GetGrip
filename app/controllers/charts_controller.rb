@@ -8,7 +8,7 @@ class ChartsController < ApplicationController
     	@gym.routes.where("is_set = 1 or is_set = 2").group(:hold_color).count.each {|key, value|
     		dataHash = Hash.new
     		valueHash = Hash.new
-    		valueHash["Occurance"] = value
+    		valueHash["Occurrence"] = value
 
     		dataHash["data"] = valueHash;
     		dataHash["name"] = @gym.hold_colors.find(key).colorName

@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-sm-6 mt-4">
+	  <div class = "card">
+	  	<h4 class="card-header">Gym stats</h4>
+	    <div class="card-body">
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="col-sm-6 mt-4">
+	  <div class = "card">
+	  	<h4 class="card-header">Your Gyms</h4>
+	    <div class="card-body">
+			<div class="table-responsive table-hover" >
+			  <table class="table">
+			    <thead class = "thead-dark">
+			        <th scope="col">Name</th>
+			      </tr>
+			    </thead>
+
+			    <tbody>
+			    	<% Gym.all.each do |gym| %>
+				      <tr>
+						<td>
+							<%= gym.name %>
+							<%= link_to 'Show', gym_path(gym), class: "btn btn-info"%>
+						</td>
+					  </tr>
+				  	<%end%>
+			    </tbody>
+			  </table>
+			</div>
+	    </div>
+	  </div>
+	</div>
+</div>

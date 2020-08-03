@@ -78,7 +78,7 @@ function updateStats()
       color.name = $(this).text();
 
       var data = new Object();
-      data["Occurance"] = 1;
+      data["Occurrence"] = 1;
       color.data = data;
 
       color.color = $(this).attr('data-swatch');
@@ -111,7 +111,7 @@ function updateStats()
       grade.name = $(this).text();
 
       var data = new Object();
-      data["Occurance"] = 1;
+      data["Occurrence"] = 1;
       grade.data = data;
 
       grades[gradeCounter] = grade;
