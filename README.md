@@ -1,10 +1,6 @@
 # Get Grip
 > GetGrip is a web app for managing and interacting with climbing gyms.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 Know what you've climbed, and what you should be climbing! GetGrip optimizes your gym time and gives you useful metrics on your performance. Don't worry about adapting your climbing gym's grades, hold colors, or any existing standards to our platform. GetGrip will meet your gym wherever it's at.
 
 ![](header.png)
