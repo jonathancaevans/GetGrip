@@ -1,4 +1,4 @@
-# Get Grip - Live version: [GetGrip](http://getgrip.rocks/)
+# Get Grip - Live version: [GetGrip](https://getgriprocks.herokuapp.com)
 > GetGrip is a web app for managing and interacting with climbing gyms.
 
 Know what you've climbed, and what you should be climbing! GetGrip optimizes your gym time and gives you useful metrics on your performance. Don't worry about adapting your climbing gym's grades, hold colors, or any existing standards to our platform. GetGrip will meet your gym wherever it's at.
